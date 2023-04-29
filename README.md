@@ -11,72 +11,75 @@ This repository contains the source code for a simple game engine implemented in
 
 ## Directory Overview
 
+```bash
 GameEngine/
-|-- CMakeLists.txt
-|-- README.md
-|-- run.sh
-|-- LICENSE
-|-- src/
-| |-- core/
-| | |-- Engine.h
-| | |-- Engine.cpp
-| | |-- Window.h
-| | |-- Window.cpp
-| | |-- Time.h
-| | |-- Time.cpp
-| |-- graphics/
-| | |-- Renderer.h
-| | |-- Renderer.cpp
-| | |-- Mesh.h
-| | |-- Mesh.cpp
-| | |-- Material.h
-| | |-- Material.cpp
-| | |-- Texture.h
-| | |-- Texture.cpp
-| | |-- Shader.h
-| | |-- Shader.cpp
-| |-- physics/
-| | |-- physics_world.h
-| | |-- physics_world.cpp
-| | |-- rigid_body.h
-| | |-- rigid_body.cpp
-| | |-- collider.h
-| | |-- collider.cpp
-| |-- input/
-| | |-- input_manager.h
-| | |-- input_manager.cpp
-| |-- scene/
-| | |-- game_object.h
-| | |-- game_object.cpp
-| | |-- transform.h
-| | |-- transform.cpp
-| | |-- camera.h
-| | |-- camera.cpp
-| | |-- component.h
-| | |-- component.cpp
-| |-- resource/
-| | |-- resource_manager.h
-| | |-- resource_manager.cpp
-| |-- utils/
-| | |-- math.h
-| | |-- math.cpp
-| | |-- logging.h
-| | |-- logging.cpp
-| | |-- random.h
-| | |-- random.cpp
-| |-- game/
-| | |-- gameplay.h
-| | |-- gameplay.cpp
-| | |-- scenes/
-| | | |-- level_1.h
-| | | |-- level_1.cpp
-| |-- main.cpp
-|-- assets/
-| |-- shaders/
-| | |-- vertex.glsl
-| | |-- fragment.glsl
-| |-- textures/
-| | |-- texture.png
+├── CMakeLists.txt
+├── README.md
+├── run.sh
+├── LICENSE
+├── src/
+│   ├── core/
+│   │   ├── Engine.h
+│   │   ├── Engine.cpp
+│   │   ├── Window.h
+│   │   ├── Window.cpp
+│   │   ├── Time.h
+│   │   └── Time.cpp
+│   ├── graphics/
+│   │   ├── Renderer.h
+│   │   ├── Renderer.cpp
+│   │   ├── Mesh.h
+│   │   ├── Mesh.cpp
+│   │   ├── Material.h
+│   │   ├── Material.cpp
+│   │   ├── Texture.h
+│   │   ├── Texture.cpp
+│   │   ├── Shader.h
+│   │   └── Shader.cpp
+│   ├── physics/
+│   │   ├── physics_world.h
+│   │   ├── physics_world.cpp
+│   │   ├── rigid_body.h
+│   │   ├── rigid_body.cpp
+│   │   ├── collider.h
+│   │   └── collider.cpp
+│   ├── input/
+│   │   ├── input_manager.h
+│   │   └── input_manager.cpp
+│   ├── scene/
+│   │   ├── game_object.h
+│   │   ├── game_object.cpp
+│   │   ├── transform.h
+│   │   ├── transform.cpp
+│   │   ├── camera.h
+│   │   ├── camera.cpp
+│   │   ├── component.h
+│   │   └── component.cpp
+│   ├── resource/
+│   │   ├── resource_manager.h
+│   │   └── resource_manager.cpp
+│   ├── utils/
+│   │   ├── math.h
+│   │   ├── math.cpp
+│   │   ├── logging.h
+│   │   ├── logging.cpp
+│   │   ├── random.h
+│   │   └── random.cpp
+│   ├── game/
+│   │   ├── gameplay.h
+│   │   ├── gameplay.cpp
+│   │   └── scenes/
+│   │       ├── level_1.h
+│   │       └── level_1.cpp
+│   └── main.cpp
+├── assets/
+│   ├── shaders/
+│   │   ├── vertex.glsl
+│   │   └── fragment.glsl
+│   └── textures/
+│       └── texture.png
+
+```
 
 ## Project structure
 
