@@ -27,7 +27,7 @@ int main()
     }
     catch (const std::runtime_error &e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Runtime error: " << e.what() << '\n';
         return EXIT_FAILURE;
     }
 

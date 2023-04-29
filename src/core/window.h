@@ -21,6 +21,9 @@
 // GLFW libraries
 #include <GLFW/glfw3.h>
 
+// Project headers
+#include "time.h"
+
 /**
  * @brief
  * Class that handles the window creation and management
@@ -51,6 +54,8 @@ private:
     std::uint32_t m_height;
     GLFWwindow *m_window;
     const char *m_title;
+
+    Time m_time;
 };
 
 #endif //! WINDOW_H

@@ -88,6 +88,7 @@ void Window::init()
     }
 
     glfwMakeContextCurrent(m_window);
+    m_time = Time();
 }
 
 /**
@@ -98,6 +99,10 @@ void Window::run()
 {
     while (!glfwWindowShouldClose(m_window))
     {
+        m_time.update();
+        auto delta_time = m_time.get_delta_time();
+        auto elapsed_time = m_time.get_elapsed_time();
+
         glfwSwapBuffers(m_window);
         glfwPollEvents();
     }
