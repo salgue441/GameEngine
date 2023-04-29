@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/GameEngine.dir/src/main.cpp.o -o bin/GameEngine  /usr/lib/x86_64-linux-gnu/libGLEW.so -lglfw /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so 
