@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/GameEngine.dir/src/core/window.cpp.o"
+  "CMakeFiles/GameEngine.dir/src/core/window.cpp.o.d"
   "CMakeFiles/GameEngine.dir/src/main.cpp.o"
   "CMakeFiles/GameEngine.dir/src/main.cpp.o.d"
   "bin/GameEngine"

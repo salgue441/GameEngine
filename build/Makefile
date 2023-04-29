@@ -129,6 +129,30 @@ GameEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/build
 .PHONY : GameEngine/fast
 
+src/core/window.o: src/core/window.cpp.o
+.PHONY : src/core/window.o
+
+# target to build an object file
+src/core/window.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/core/window.cpp.o
+.PHONY : src/core/window.cpp.o
+
+src/core/window.i: src/core/window.cpp.i
+.PHONY : src/core/window.i
+
+# target to preprocess a source file
+src/core/window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/core/window.cpp.i
+.PHONY : src/core/window.cpp.i
+
+src/core/window.s: src/core/window.cpp.s
+.PHONY : src/core/window.s
+
+# target to generate assembly for a file
+src/core/window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/core/window.cpp.s
+.PHONY : src/core/window.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GameEngine"
+	@echo "... src/core/window.o"
+	@echo "... src/core/window.i"
+	@echo "... src/core/window.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
