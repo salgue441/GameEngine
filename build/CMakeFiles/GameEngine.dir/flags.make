@@ -6,5 +6,5 @@ CXX_DEFINES = -DGLFW_INCLUDE_NONE
 
 CXX_INCLUDES = -I/mnt/c/users/carlo/documents/Developer/GameEngine/src
 
-CXX_FLAGS = -Wall -Wextra -pedantic -Werror -std=c++20
+CXX_FLAGS = -Wall -Wextra -pedantic -lGL -lglfw -lGLU -O0 -lglew -Wno-unused-variable -std=c++20
 

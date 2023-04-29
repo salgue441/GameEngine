@@ -129,6 +129,30 @@ GameEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/build
 .PHONY : GameEngine/fast
 
+src/core/time.o: src/core/time.cpp.o
+.PHONY : src/core/time.o
+
+# target to build an object file
+src/core/time.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/core/time.cpp.o
+.PHONY : src/core/time.cpp.o
+
+src/core/time.i: src/core/time.cpp.i
+.PHONY : src/core/time.i
+
+# target to preprocess a source file
+src/core/time.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/core/time.cpp.i
+.PHONY : src/core/time.cpp.i
+
+src/core/time.s: src/core/time.cpp.s
+.PHONY : src/core/time.s
+
+# target to generate assembly for a file
+src/core/time.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/src/core/time.cpp.s
+.PHONY : src/core/time.cpp.s
+
 src/core/window.o: src/core/window.cpp.o
 .PHONY : src/core/window.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GameEngine"
+	@echo "... src/core/time.o"
+	@echo "... src/core/time.i"
+	@echo "... src/core/time.s"
 	@echo "... src/core/window.o"
 	@echo "... src/core/window.i"
 	@echo "... src/core/window.s"

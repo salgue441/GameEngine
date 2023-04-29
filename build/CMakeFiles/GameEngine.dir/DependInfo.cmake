@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/mnt/c/users/carlo/documents/Developer/GameEngine/src/core/time.cpp" "CMakeFiles/GameEngine.dir/src/core/time.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/core/time.cpp.o.d"
   "/mnt/c/users/carlo/documents/Developer/GameEngine/src/core/window.cpp" "CMakeFiles/GameEngine.dir/src/core/window.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/core/window.cpp.o.d"
   "/mnt/c/users/carlo/documents/Developer/GameEngine/src/main.cpp" "CMakeFiles/GameEngine.dir/src/main.cpp.o" "gcc" "CMakeFiles/GameEngine.dir/src/main.cpp.o.d"
   )
