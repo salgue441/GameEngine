@@ -43,11 +43,13 @@ public:
     std::uint32_t get_height() const noexcept;
     GLFWwindow *get_window() const noexcept;
     const char *get_title() const noexcept;
+    bool is_running() const noexcept;
 
     // Methods
     void init();
-    void run();
     void terminate();
+    void update();
+    void render();
 
 private:
     std::uint32_t m_width;
@@ -55,6 +57,7 @@ private:
     GLFWwindow *m_window;
     const char *m_title;
 
+    bool m_is_running;
     Time m_time;
 };
 

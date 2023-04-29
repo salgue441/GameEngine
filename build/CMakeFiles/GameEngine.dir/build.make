@@ -69,10 +69,24 @@ include CMakeFiles/GameEngine.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/GameEngine.dir/flags.make
 
+CMakeFiles/GameEngine.dir/src/core/engine.cpp.o: CMakeFiles/GameEngine.dir/flags.make
+CMakeFiles/GameEngine.dir/src/core/engine.cpp.o: ../src/core/engine.cpp
+CMakeFiles/GameEngine.dir/src/core/engine.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GameEngine.dir/src/core/engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/src/core/engine.cpp.o -MF CMakeFiles/GameEngine.dir/src/core/engine.cpp.o.d -o CMakeFiles/GameEngine.dir/src/core/engine.cpp.o -c /mnt/c/users/carlo/documents/Developer/GameEngine/src/core/engine.cpp
+
+CMakeFiles/GameEngine.dir/src/core/engine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GameEngine.dir/src/core/engine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/users/carlo/documents/Developer/GameEngine/src/core/engine.cpp > CMakeFiles/GameEngine.dir/src/core/engine.cpp.i
+
+CMakeFiles/GameEngine.dir/src/core/engine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/src/core/engine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/users/carlo/documents/Developer/GameEngine/src/core/engine.cpp -o CMakeFiles/GameEngine.dir/src/core/engine.cpp.s
+
 CMakeFiles/GameEngine.dir/src/core/time.cpp.o: CMakeFiles/GameEngine.dir/flags.make
 CMakeFiles/GameEngine.dir/src/core/time.cpp.o: ../src/core/time.cpp
 CMakeFiles/GameEngine.dir/src/core/time.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GameEngine.dir/src/core/time.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GameEngine.dir/src/core/time.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/src/core/time.cpp.o -MF CMakeFiles/GameEngine.dir/src/core/time.cpp.o.d -o CMakeFiles/GameEngine.dir/src/core/time.cpp.o -c /mnt/c/users/carlo/documents/Developer/GameEngine/src/core/time.cpp
 
 CMakeFiles/GameEngine.dir/src/core/time.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/GameEngine.dir/src/core/time.cpp.s: cmake_force
 CMakeFiles/GameEngine.dir/src/core/window.cpp.o: CMakeFiles/GameEngine.dir/flags.make
 CMakeFiles/GameEngine.dir/src/core/window.cpp.o: ../src/core/window.cpp
 CMakeFiles/GameEngine.dir/src/core/window.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GameEngine.dir/src/core/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GameEngine.dir/src/core/window.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/src/core/window.cpp.o -MF CMakeFiles/GameEngine.dir/src/core/window.cpp.o.d -o CMakeFiles/GameEngine.dir/src/core/window.cpp.o -c /mnt/c/users/carlo/documents/Developer/GameEngine/src/core/window.cpp
 
 CMakeFiles/GameEngine.dir/src/core/window.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/GameEngine.dir/src/core/window.cpp.s: cmake_force
 CMakeFiles/GameEngine.dir/src/main.cpp.o: CMakeFiles/GameEngine.dir/flags.make
 CMakeFiles/GameEngine.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/GameEngine.dir/src/main.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GameEngine.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GameEngine.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/src/main.cpp.o -MF CMakeFiles/GameEngine.dir/src/main.cpp.o.d -o CMakeFiles/GameEngine.dir/src/main.cpp.o -c /mnt/c/users/carlo/documents/Developer/GameEngine/src/main.cpp
 
 CMakeFiles/GameEngine.dir/src/main.cpp.i: cmake_force
@@ -113,6 +127,7 @@ CMakeFiles/GameEngine.dir/src/main.cpp.s: cmake_force
 
 # Object files for target GameEngine
 GameEngine_OBJECTS = \
+"CMakeFiles/GameEngine.dir/src/core/engine.cpp.o" \
 "CMakeFiles/GameEngine.dir/src/core/time.cpp.o" \
 "CMakeFiles/GameEngine.dir/src/core/window.cpp.o" \
 "CMakeFiles/GameEngine.dir/src/main.cpp.o"
@@ -120,6 +135,7 @@ GameEngine_OBJECTS = \
 # External object files for target GameEngine
 GameEngine_EXTERNAL_OBJECTS =
 
+bin/GameEngine: CMakeFiles/GameEngine.dir/src/core/engine.cpp.o
 bin/GameEngine: CMakeFiles/GameEngine.dir/src/core/time.cpp.o
 bin/GameEngine: CMakeFiles/GameEngine.dir/src/core/window.cpp.o
 bin/GameEngine: CMakeFiles/GameEngine.dir/src/main.cpp.o
@@ -129,7 +145,7 @@ bin/GameEngine: /usr/lib/x86_64-linux-gnu/libGLEW.so
 bin/GameEngine: /usr/lib/x86_64-linux-gnu/libGLX.so
 bin/GameEngine: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 bin/GameEngine: CMakeFiles/GameEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable bin/GameEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/users/carlo/documents/Developer/GameEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable bin/GameEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GameEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

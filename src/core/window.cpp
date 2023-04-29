@@ -65,6 +65,17 @@ const char *Window::get_title() const noexcept
     return m_title;
 }
 
+/**
+ * @brief
+ * Check if the window is running
+ * @return true If the window is running
+ * @return false If the window is not running
+ */
+bool Window::is_running() const noexcept
+{
+    return !glfwWindowShouldClose(m_window);
+}
+
 // Methods
 /**
  * @brief
@@ -73,39 +84,17 @@ const char *Window::get_title() const noexcept
 void Window::init()
 {
     if (!glfwInit())
-    {
-        std::runtime_error("Error initializing GLFW");
-        std::exit(EXIT_FAILURE);
-    }
+        throw std::runtime_error("Failed to initialize GLFW");
 
-    m_window = glfwCreateWindow(m_width, m_height, m_title,
-                                nullptr, nullptr);
+    m_window = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
 
     if (!m_window)
     {
-        std::runtime_error("Error creating the window");
-        std::exit(EXIT_FAILURE);
+        glfwTerminate();
+        throw std::runtime_error("Failed to create GLFW window");
     }
 
     glfwMakeContextCurrent(m_window);
-    m_time = Time();
-}
-
-/**
- * @brief
- * Run the window
- */
-void Window::run()
-{
-    while (!glfwWindowShouldClose(m_window))
-    {
-        m_time.update();
-        auto delta_time = m_time.get_delta_time();
-        auto elapsed_time = m_time.get_elapsed_time();
-
-        glfwSwapBuffers(m_window);
-        glfwPollEvents();
-    }
 }
 
 /**
@@ -115,4 +104,22 @@ void Window::run()
 void Window::terminate()
 {
     glfwTerminate();
+}
+
+/**
+ * @brief
+ * Update the window
+ */
+void Window::update()
+{
+    glfwPollEvents();
+}
+
+/**
+ * @brief
+ * Render the window
+ */
+void Window::render()
+{
+    glfwSwapBuffers(m_window);
 }

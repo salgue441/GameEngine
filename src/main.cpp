@@ -12,24 +12,12 @@
 #include <iostream>
 
 // Project Files
-#include "core/window.h"
+#include "core/engine.h"
 
 int main()
 {
-    std::uint32_t width{800};
-    std::uint32_t height{600};
+    Engine engine(800, 600, "Game Engine");
+    engine.run();
 
-    Window window(width, height, "Game Engine");
-
-    try
-    {
-        window.init();
-    }
-    catch (const std::runtime_error &e)
-    {
-        std::cerr << "Runtime error: " << e.what() << '\n';
-        return EXIT_FAILURE;
-    }
-
-    window.run();
+    return EXIT_SUCCESS;
 }
