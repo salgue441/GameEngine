@@ -22,7 +22,7 @@
 #include <GLFW/glfw3.h>
 
 // Project headers
-#include "time.h"
+#include "../time/time.h"
 
 /**
  * @brief

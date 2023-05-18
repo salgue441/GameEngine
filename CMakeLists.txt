@@ -22,7 +22,7 @@ add_executable(GameEngine ${SOURCES})
 # Link libraries
 target_link_libraries(GameEngine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_compile_definitions(GameEngine PRIVATE -DGLFW_INCLUDE_NONE)
-target_compile_options(GameEngine PRIVATE -Wall -Wextra -pedantic -lGL -lglfw -lGLU -O0 -lglew -Wno-unused-variable)  # Add -Wno-unused-variable here
+target_compile_options(GameEngine PRIVATE -Wall -Wextra -pedantic -lGL -lglfw -lGLU -O0 -lglew -Wno-unused-variable)  
 
 # Required libraries
 find_package(OpenGL REQUIRED)

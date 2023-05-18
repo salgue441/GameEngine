@@ -18,7 +18,7 @@
 #include <iostream>
 
 // Project headers
-#include "window.h"
+#include "../window/window.h"
 
 /**
  * @brief
