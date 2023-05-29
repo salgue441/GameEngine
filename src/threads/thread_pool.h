@@ -52,25 +52,23 @@ public:
     {
         try
         {
-            auto return_type = typename std::result_of<F(Args...)>::type();
-            auto task = std::make_shared<std::packaged_task<return_type()>>(
+            auto task = std::make_shared<std::packaged_task<typename std::result_of<F(Args...)>::type()>>(
                 std::bind(std::forward<F>(func), std::forward<Args>(args)...));
 
-            std::future<return_type> result = task->get_future();
+            std::future<typename std::result_of<F(Args...)>::type> res = task->get_future();
 
             {
                 std::unique_lock<std::mutex> lock(m_mutex);
 
                 if (m_stop)
-                    throw std::runtime_error(
-                        "Error: The thread pool is stopped");
+                    throw std::runtime_error("enqueue on stopped ThreadPool");
 
                 m_tasks.emplace([task]()
                                 { (*task)(); });
             }
 
             m_condition.notify_one();
-            return result;
+            return res;
         }
         catch (const std::exception &e)
         {
