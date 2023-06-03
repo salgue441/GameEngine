@@ -624,6 +624,262 @@ namespace Math
         return logarithm(a, 2);
     }
 
+    // Vectors
+    template <typename T>
+    struct Vector3
+    {
+        T x, y, z;
+    };
+
+    // Vector operations
+    /**
+     * @brief
+     * Adds two vectors
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the addition
+     */
+    template <typename T>
+    inline Vector3<T> operator+(const Vector3<T> &a, const Vector3<T> &b)
+    {
+        return {a.x + b.x, a.y + b.y, a.z + b.z};
+    }
+
+    /**
+     * @brief
+     * Subtracts two vectors
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the subtraction
+     */
+    template <typename T>
+    inline Vector3<T> operator-(const Vector3<T> &a, const Vector3<T> &b)
+    {
+        return {a.x - b.x, a.y - b.y, a.z - b.z};
+    }
+
+    /**
+     * @brief
+     * Multiplies two vectors
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the multiplication
+     */
+    template <typename T>
+    inline Vector3<T> operator*(const Vector3<T> &a, const Vector3<T> &b)
+    {
+        return {a.x * b.x, a.y * b.y, a.z * b.z};
+    }
+
+    /**
+     * @brief
+     * Divides two vectors
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the division
+     */
+    template <typename T>
+    inline Vector3<T> operator/(const Vector3<T> &a, const Vector3<T> &b)
+    {
+        return {a.x / b.x, a.y / b.y, a.z / b.z};
+    }
+
+    /**
+     * @brief
+     * Adds a vector to another
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the addition
+     */
+    template <typename T>
+    inline Vector3<T> &operator+=(Vector3<T> &a, const Vector3<T> &b)
+    {
+        a.x += b.x;
+        a.y += b.y;
+        a.z += b.z;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Subtracts a vector to another
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the subtraction
+     */
+    template <typename T>
+    inline Vector3<T> &operator-=(Vector3<T> &a, const Vector3<T> &b)
+    {
+        a.x -= b.x;
+        a.y -= b.y;
+        a.z -= b.z;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Multiplies a vector to another
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the multiplication
+     */
+    template <typename T>
+    inline Vector3<T> &operator*=(Vector3<T> &a, const Vector3<T> &b)
+    {
+        a.x *= b.x;
+        a.y *= b.y;
+        a.z *= b.z;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Divides a vector to another
+     * @tparam T Type of the vectors
+     * @param a First vector
+     * @param b Second vector
+     * @return Vector3<T> Result of the division
+     */
+    template <typename T>
+    inline Vector3<T> &operator/=(Vector3<T> &a, const Vector3<T> &b)
+    {
+        a.x /= b.x;
+        a.y /= b.y;
+        a.z /= b.z;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Adds a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the addition
+     */
+    template <typename T>
+    inline Vector3<T> operator+(const Vector3<T> &a, const T &b)
+    {
+        return {a.x + b, a.y + b, a.z + b};
+    }
+
+    /**
+     * @brief
+     * Subtracts a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the subtraction
+     */
+    template <typename T>
+    inline Vector3<T> operator-(const Vector3<T> &a, const T &b)
+    {
+        return {a.x - b, a.y - b, a.z - b};
+    }
+
+    /**
+     * @brief
+     * Multiplies a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the multiplication
+     */
+    template <typename T>
+    inline Vector3<T> operator*(const Vector3<T> &a, const T &b)
+    {
+        return {a.x * b, a.y * b, a.z * b};
+    }
+
+    /**
+     * @brief
+     * Divides a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the division
+     */
+    template <typename T>
+    inline Vector3<T> operator/(const Vector3<T> &a, const T &b)
+    {
+        return {a.x / b, a.y / b, a.z / b};
+    }
+
+    /**
+     * @brief
+     * Adds a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the addition
+     */
+    template <typename T>
+    inline Vector3<T> &operator+=(Vector3<T> &a, const T &b)
+    {
+        a.x += b;
+        a.y += b;
+        a.z += b;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Subtracts a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the subtraction
+     */
+    template <typename T>
+    inline Vector3<T> &operator-=(Vector3<T> &a, const T &b)
+    {
+        a.x -= b;
+        a.y -= b;
+        a.z -= b;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Multiplies a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the multiplication
+     */
+    template <typename T>
+    inline Vector3<T> &operator*=(Vector3<T> &a, const T &b)
+    {
+        a.x *= b;
+        a.y *= b;
+        a.z *= b;
+        return a;
+    }
+
+    /**
+     * @brief
+     * Divides a scalar to a vector
+     * @tparam T Type of the vector
+     * @param a Vector
+     * @param b Scalar
+     * @return Vector3<T> Result of the division
+     */
+    template <typename T>
+    inline Vector3<T> &operator/=(Vector3<T> &a, const T &b)
+    {
+        a.x /= b;
+        a.y /= b;
+        a.z /= b;
+        return a;
+    }
+
 } // namespace Math
 
 #endif //! MATH_H
