@@ -9,11 +9,10 @@
  *
  */
 
-#ifndef MATH_H
-#define MATH_H
+#pragma once
 
 // C++ Standard Library
-#include <cstdint>
+#include <cmath>
 
 namespace Math
 {
@@ -34,11 +33,11 @@ namespace Math
 
     /**
      * @brief
-     * Substracts two numbers
+     * Subtracts two numbers
      * @tparam T Type of the numbers
      * @param a First number
      * @param b Second number
-     * @return T Result of the substraction
+     * @return T Result of the subtraction
      */
     template <typename T>
     inline T subtract(T a, T b)
@@ -71,7 +70,11 @@ namespace Math
     template <typename T>
     inline T divide(T a, T b)
     {
-        return a / b;
+        if (b != 0)
+            return a / b;
+
+        else
+            throw std::runtime_error("Error: Division by zero");
     }
 
     /**
@@ -90,19 +93,19 @@ namespace Math
 
     /**
      * @brief
-     * Calculates the power of a number
+     * Calculates the power of a number with a non-negative integer exponent
      * @tparam T Type of the numbers
-     * @param a Base
-     * @param b Exponent
+     * @param base Base
+     * @param exponent Exponent
      * @return T Result of the power
      */
     template <typename T>
-    inline T power(T a, T b)
+    inline T power(T base, unsigned int exponent)
     {
         T result = 1;
 
-        for (T i = 0; i < b; i++)
-            result *= a;
+        for (unsigned int i = 0; i < exponent; i++)
+            result *= base;
 
         return result;
     }
@@ -117,64 +120,75 @@ namespace Math
     template <typename T>
     inline T square_root(T a)
     {
-        T result = 0;
+        return std::sqrt(a);
+    }
 
-        while (result * result < a)
-            result++;
+    // Mathematical constants
+    /**
+     * @brief
+     * The mathematical constant PI
+     */
+    const double PI = 3.14159265358979323846;
 
-        return result;
+    /**
+     * @brief
+     * The mathematical constant e (base of natural logarithm)
+     */
+    const double E = 2.71828182845904523536;
+
+    // Trigonometric functions
+
+    /**
+     * @brief
+     * Calculates the sine of an angle
+     * @tparam T Type of the angle
+     * @param angle Angle in radians
+     * @return T Sine of the angle
+     */
+    template <typename T>
+    inline T sine(T angle)
+    {
+        return std::sin(angle);
     }
 
     /**
      * @brief
-     * Calculates the factorial of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the factorial
+     * Calculates the cosine of an angle
+     * @tparam T Type of the angle
+     * @param angle Angle in radians
+     * @return T Cosine of the angle
      */
     template <typename T>
-    inline T factorial(T a)
+    inline T cosine(T angle)
     {
-        T result = 1;
-
-        for (T i = 1; i <= a; i++)
-            result *= i;
-
-        return result;
+        return std::cos(angle);
     }
 
+    /**
+     * @brief
+     * Calculates the tangent of an angle
+     * @tparam T Type of the angle
+     * @param angle Angle in radians
+     * @return T Tangent of the angle
+     */
+    template <typename T>
+    inline T tangent(T angle)
+    {
+        return std::tan(angle);
+    }
+
+    // Other functions
     /**
      * @brief
      * Calculates the absolute value of a number
      * @tparam T Type of the number
      * @param a Number
-     * @return T Result of the absolute value
+     * @return T Absolute value of the number
      */
     template <typename T>
     inline T absolute(T a)
     {
-        return a < 0 ? -a : a;
-    }
-
-    /**
-     * @brief
-     * Calculates the logarithm of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the logarithm
-     */
-    template <typename T>
-    inline T logarithm(T a)
-    {
-        T result = 0;
-
-        while (a > 1)
-        {
-            a /= 10;
-            result++;
-        }
-
-        return result;
+        return std::abs(a);
     }
 
     /**
@@ -182,353 +196,186 @@ namespace Math
      * Calculates the natural logarithm of a number
      * @tparam T Type of the number
      * @param a Number
-     * @return T Result of the natural logarithm
+     * @return T Natural logarithm of the number
      */
     template <typename T>
-    inline T natural_logarithm(T a)
+    inline T logarithm(T a)
     {
-        T result = 0;
+        if (a > 0)
+            return std::log(a);
 
-        while (a > 1)
+        else
+            throw std::runtime_error("Error: Invalid argument for logarithm");
+    }
+
+    /**
+     * @brief
+     * Calculates the logarithm of a number in a given base
+     * @tparam T Type of the number
+     * @param a Number
+     * @param base Base
+     * @return T Logarithm of the number in the given base
+     */
+    template <typename T>
+    inline T logarithm(T a, T base)
+    {
+        if (a > 0 && base > 0)
+            return std::log(a) / std::log(base);
+
+        else
+            throw std::runtime_error("Error: Invalid argument for logarithm");
+    }
+
+    /**
+     * @brief
+     * Calculates the factorial of a non-negative integer
+     * @tparam T Type of the number
+     * @param a Number
+     * @return T Factorial of the number
+     */
+    template <typename T>
+    inline T factorial(T a)
+    {
+        if (a >= 0)
         {
-            a /= 10;
-            result++;
+            T result = 1;
+
+            for (T i = 1; i <= a; i++)
+                result *= i;
+
+            return result;
         }
 
-        return result;
+        else
+            throw std::runtime_error("Error: Invalid argument for factorial");
     }
 
     /**
      * @brief
-     * Calculates the sine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the sine
+     * Calculates the greatest common divisor of two non-negative integers
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @return T Greatest common divisor of the numbers
      */
     template <typename T>
-    inline T sine(T a)
+    inline T greatest_common_divisor(T a, T b)
     {
-        auto result = 0;
+        if (a >= 0 && b >= 0)
+        {
+            while (b != 0)
+            {
+                T temp = b;
+                b = a % b;
+                a = temp;
+            }
 
-        for (T i = 0; i < 10; i++)
-            result += power(-1, i) * power(a, 2 * i + 1) / factorial(2 * i + 1);
+            return a;
+        }
 
-        return result;
+        else
+            throw std::runtime_error("Error: Invalid argument for greatest common divisor");
     }
 
     /**
      * @brief
-     * Calculates the cosine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the cosine
+     * Calculates the least common multiple of two non-negative integers
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @return T Least common multiple of the numbers
      */
     template <typename T>
-    inline T cosine(T a)
+    inline T least_common_multiple(T a, T b)
     {
-        auto result = 0;
+        if (a >= 0 && b >= 0)
+            return a * b / greatest_common_divisor(a, b);
 
-        for (T i = 0; i < 10; i++)
-            result += power(-1, i) * power(a, 2 * i) / factorial(2 * i);
-
-        return result;
+        else
+            throw std::runtime_error("Error: Invalid argument for least common multiple");
     }
 
     /**
      * @brief
-     * Calculates the tangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the tangent
+     * Calculates the greatest common divisor of two non-negative integers using the Euclidean algorithm
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @return T Greatest common divisor of the numbers
      */
     template <typename T>
-    inline T tangent(T a)
+    inline T euclidean_greatest_common_divisor(T a, T b)
     {
-        return sine(a) / cosine(a);
+        if (a >= 0 && b >= 0)
+        {
+            while (a != b)
+            {
+                if (a > b)
+                    a -= b;
+
+                else
+                    b -= a;
+            }
+
+            return a;
+        }
+
+        else
+            throw std::runtime_error("Error: Invalid argument for greatest common divisor");
     }
 
     /**
      * @brief
-     * Calculates the cotangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the cotangent
+     * Calculates the least common multiple of two non-negative integers using the Euclidean algorithm
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @return T Least common multiple of the numbers
      */
     template <typename T>
-    inline T cotangent(T a)
+    inline T euclidean_least_common_multiple(T a, T b)
     {
-        return cosine(a) / sine(a);
+        if (a >= 0 && b >= 0)
+            return a * b / euclidean_greatest_common_divisor(a, b);
+
+        else
+            throw std::runtime_error("Error: Invalid argument for least common multiple");
     }
 
     /**
      * @brief
-     * Calculates the secant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the secant
+     * Calculates the remainder of the division of two integers
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @return T Remainder of the division of the numbers
      */
     template <typename T>
-    inline T secant(T a)
+    inline T remainder(T a, T b)
     {
-        return 1 / cosine(a);
+        if (b != 0)
+            return a % b;
+
+        else
+            throw std::runtime_error("Error: Invalid argument for remainder");
     }
 
     /**
      * @brief
-     * Calculates the cosecant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the cosecant
+     * Calculates the quotient of the division of two integers
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @return T Quotient of the division of the numbers
      */
     template <typename T>
-    inline T cosecant(T a)
+    inline T quotient(T a, T b)
     {
-        return 1 / sine(a);
-    }
+        if (b != 0)
+            return a / b;
 
-    /**
-     * @brief
-     * Calculates the hyperbolic sine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic sine
-     */
-    template <typename T>
-    inline T hyperbolic_sine(T a)
-    {
-        return (power(e, a) - power(e, -a)) / 2;
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic cosine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic cosine
-     */
-    template <typename T>
-    inline T hyperbolic_cosine(T a)
-    {
-        return (power(e, a) + power(e, -a)) / 2;
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic tangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic tangent
-     */
-    template <typename T>
-    inline T hyperbolic_tangent(T a)
-    {
-        return hyperbolic_sine(a) / hyperbolic_cosine(a);
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic cotangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic cotangent
-     */
-    template <typename T>
-    inline T hyperbolic_cotangent(T a)
-    {
-        return hyperbolic_cosine(a) / hyperbolic_sine(a);
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic secant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic secant
-     */
-    template <typename T>
-    inline T hyperbolic_secant(T a)
-    {
-        return 1 / hyperbolic_cosine(a);
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic cosecant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic cosecant
-     */
-    template <typename T>
-    inline T hyperbolic_cosecant(T a)
-    {
-        return 1 / hyperbolic_sine(a);
-    }
-
-    /**
-     * @brief
-     * Calculates the arc sine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the arc sine
-     */
-    template <typename T>
-    inline T arc_sine(T a)
-    {
-        auto result = 0;
-
-        for (T i = 0; i < 10; i++)
-            result += factorial(2 * i) * power(a, 2 * i + 1) /
-                      (power(4, i) * power(factorial(i), 2) * (2 * i + 1));
-
-        return result;
-    }
-
-    /**
-     * @brief
-     * Calculates the arc cosine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the arc cosine
-     */
-    template <typename T>
-    inline T arc_cosine(T a)
-    {
-        return pi / 2 - arc_sine(a);
-    }
-
-    /**
-     * @brief
-     * Calculates the arc tangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the arc tangent
-     */
-    template <typename T>
-    inline T arc_tangent(T a)
-    {
-        auto result = 0;
-
-        for (T i = 0; i < 10; i++)
-            result += power(-1, i) * power(a, 2 * i + 1) / (2 * i + 1);
-
-        return result;
-    }
-
-    /**
-     * @brief
-     * Calculates the arc cotangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the arc cotangent
-     */
-    template <typename T>
-    inline T arc_cotangent(T a)
-    {
-        return pi / 2 - arc_tangent(a);
-    }
-
-    /**
-     * @brief
-     * Calculates the arc secant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the arc secant
-     */
-    template <typename T>
-    inline T arc_secant(T a)
-    {
-        return arc_cosine(1 / a);
-    }
-
-    /**
-     * @brief
-     * Calculates the arc cosecant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the arc cosecant
-     */
-    template <typename T>
-    inline T arc_cosecant(T a)
-    {
-        return arc_sine(1 / a);
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic arc sine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic arc sine
-     */
-    template <typename T>
-    inline T hyperbolic_arc_sine(T a)
-    {
-        return ln(a + sqrt(power(a, 2) + 1));
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic arc cosine of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic arc cosine
-     */
-    template <typename T>
-    inline T hyperbolic_arc_cosine(T a)
-    {
-        return ln(a + sqrt(power(a, 2) - 1));
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic arc tangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic arc tangent
-     */
-    template <typename T>
-    inline T hyperbolic_arc_tangent(T a)
-    {
-        return ln((1 + a) / (1 - a)) / 2;
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic arc cotangent of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic arc cotangent
-     */
-    template <typename T>
-    inline T hyperbolic_arc_cotangent(T a)
-    {
-        return ln((a + 1) / (a - 1)) / 2;
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic arc secant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic arc secant
-     */
-    template <typename T>
-    inline T hyperbolic_arc_secant(T a)
-    {
-        return ln((sqrt(-power(a, 2) + 1) + 1) / a);
-    }
-
-    /**
-     * @brief
-     * Calculates the hyperbolic arc cosecant of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the hyperbolic arc cosecant
-     */
-    template <typename T>
-    inline T hyperbolic_arc_cosecant(T a)
-    {
-        return ln((sqrt(power(a, 2) + 1) + 1) / a);
+        else
+            throw std::runtime_error("Error: Invalid argument for quotient");
     }
 
     /**
@@ -536,350 +383,101 @@ namespace Math
      * Calculates the square root of a number
      * @tparam T Type of the number
      * @param a Number
-     * @return T Result of the square root
+     * @return T Square root of the number
      */
     template <typename T>
     inline T square_root(T a)
     {
-        return power(a, 0.5);
+        if (a >= 0)
+            return std::sqrt(a);
+
+        else
+            throw std::runtime_error("Error: Invalid argument for square root");
     }
 
     /**
      * @brief
-     * Calculates the cubic root of a number
+     * Calculates the cube root of a number
      * @tparam T Type of the number
      * @param a Number
-     * @return T Result of the cubic root
+     * @return T Cube root of the number
      */
     template <typename T>
-    inline T cubic_root(T a)
+    inline T cube_root(T a)
     {
-        return power(a, 1.0 / 3.0);
+        return std::cbrt(a);
+    }
+
+    // Degree/radian conversion
+    /**
+     * @brief
+     * Converts degrees to radians
+     * @tparam T Type of the number
+     * @param a Number in degrees
+     * @return T Number in radians
+     */
+    template <typename T>
+    inline T degrees_to_radians(T a)
+    {
+        return a * pi<T> / 180;
     }
 
     /**
      * @brief
-     * Calculates the n-th root of a number
+     * Converts radians to degrees
+     * @tparam T Type of the number
+     * @param a Number in radians
+     * @return T Number in degrees
+     */
+    template <typename T>
+    inline T radians_to_degrees(T a)
+    {
+        return a * 180 / pi<T>;
+    }
+
+    // Interpolation
+    /**
+     * @brief
+     * Linearly interpolates between two numbers
+     * @tparam T Type of the numbers
+     * @param a First number
+     * @param b Second number
+     * @param t Interpolation factor
+     * @return T Interpolated number
+     */
+    template <typename T>
+    inline T lerp(T a, T b, T t)
+    {
+        return a + t * (b - a);
+    }
+
+    /**
+     * @brief
+     * Calculates the inverse of a number
      * @tparam T Type of the number
      * @param a Number
-     * @param n Root
-     * @return T Result of the n-th root
+     * @return T Inverse of the number
      */
     template <typename T>
-    inline T n_root(T a, T n)
+    inline T inverse(T a)
     {
-        return power(a, 1.0 / n);
+        if (a != 0)
+            return 1 / a;
+
+        else
+            throw std::runtime_error("Error: Invalid argument for inverse");
     }
 
     /**
      * @brief
-     * Calculates the logarithm of a number
+     * Calculates the cubic interpolation of a number
      * @tparam T Type of the number
      * @param a Number
-     * @param base Base
-     * @return T Result of the logarithm
+     * @return T Cubic interpolation of the number
      */
     template <typename T>
-    inline T logarithm(T a, T base)
+    inline T cubic_interpolation(T a)
     {
-        return ln(a) / ln(base);
+        return a * a * (3 - 2 * a);
     }
-
-    /**
-     * @brief
-     * Calculates the natural logarithm of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the natural logarithm
-     */
-    template <typename T>
-    inline T ln(T a)
-    {
-        return logarithm(a, e);
-    }
-
-    /**
-     * @brief
-     * Calculates the logarithm base 10 of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the logarithm base 10
-     */
-    template <typename T>
-    inline T log10(T a)
-    {
-        return logarithm(a, 10);
-    }
-
-    /**
-     * @brief
-     * Calculates the logarithm base 2 of a number
-     * @tparam T Type of the number
-     * @param a Number
-     * @return T Result of the logarithm base 2
-     */
-    template <typename T>
-    inline T log2(T a)
-    {
-        return logarithm(a, 2);
-    }
-
-    // Vectors
-    template <typename T>
-    struct Vector3
-    {
-        T x, y, z;
-    };
-
-    // Vector operations
-    /**
-     * @brief
-     * Adds two vectors
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the addition
-     */
-    template <typename T>
-    inline Vector3<T> operator+(const Vector3<T> &a, const Vector3<T> &b)
-    {
-        return {a.x + b.x, a.y + b.y, a.z + b.z};
-    }
-
-    /**
-     * @brief
-     * Subtracts two vectors
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the subtraction
-     */
-    template <typename T>
-    inline Vector3<T> operator-(const Vector3<T> &a, const Vector3<T> &b)
-    {
-        return {a.x - b.x, a.y - b.y, a.z - b.z};
-    }
-
-    /**
-     * @brief
-     * Multiplies two vectors
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the multiplication
-     */
-    template <typename T>
-    inline Vector3<T> operator*(const Vector3<T> &a, const Vector3<T> &b)
-    {
-        return {a.x * b.x, a.y * b.y, a.z * b.z};
-    }
-
-    /**
-     * @brief
-     * Divides two vectors
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the division
-     */
-    template <typename T>
-    inline Vector3<T> operator/(const Vector3<T> &a, const Vector3<T> &b)
-    {
-        return {a.x / b.x, a.y / b.y, a.z / b.z};
-    }
-
-    /**
-     * @brief
-     * Adds a vector to another
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the addition
-     */
-    template <typename T>
-    inline Vector3<T> &operator+=(Vector3<T> &a, const Vector3<T> &b)
-    {
-        a.x += b.x;
-        a.y += b.y;
-        a.z += b.z;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Subtracts a vector to another
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the subtraction
-     */
-    template <typename T>
-    inline Vector3<T> &operator-=(Vector3<T> &a, const Vector3<T> &b)
-    {
-        a.x -= b.x;
-        a.y -= b.y;
-        a.z -= b.z;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Multiplies a vector to another
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the multiplication
-     */
-    template <typename T>
-    inline Vector3<T> &operator*=(Vector3<T> &a, const Vector3<T> &b)
-    {
-        a.x *= b.x;
-        a.y *= b.y;
-        a.z *= b.z;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Divides a vector to another
-     * @tparam T Type of the vectors
-     * @param a First vector
-     * @param b Second vector
-     * @return Vector3<T> Result of the division
-     */
-    template <typename T>
-    inline Vector3<T> &operator/=(Vector3<T> &a, const Vector3<T> &b)
-    {
-        a.x /= b.x;
-        a.y /= b.y;
-        a.z /= b.z;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Adds a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the addition
-     */
-    template <typename T>
-    inline Vector3<T> operator+(const Vector3<T> &a, const T &b)
-    {
-        return {a.x + b, a.y + b, a.z + b};
-    }
-
-    /**
-     * @brief
-     * Subtracts a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the subtraction
-     */
-    template <typename T>
-    inline Vector3<T> operator-(const Vector3<T> &a, const T &b)
-    {
-        return {a.x - b, a.y - b, a.z - b};
-    }
-
-    /**
-     * @brief
-     * Multiplies a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the multiplication
-     */
-    template <typename T>
-    inline Vector3<T> operator*(const Vector3<T> &a, const T &b)
-    {
-        return {a.x * b, a.y * b, a.z * b};
-    }
-
-    /**
-     * @brief
-     * Divides a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the division
-     */
-    template <typename T>
-    inline Vector3<T> operator/(const Vector3<T> &a, const T &b)
-    {
-        return {a.x / b, a.y / b, a.z / b};
-    }
-
-    /**
-     * @brief
-     * Adds a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the addition
-     */
-    template <typename T>
-    inline Vector3<T> &operator+=(Vector3<T> &a, const T &b)
-    {
-        a.x += b;
-        a.y += b;
-        a.z += b;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Subtracts a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the subtraction
-     */
-    template <typename T>
-    inline Vector3<T> &operator-=(Vector3<T> &a, const T &b)
-    {
-        a.x -= b;
-        a.y -= b;
-        a.z -= b;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Multiplies a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the multiplication
-     */
-    template <typename T>
-    inline Vector3<T> &operator*=(Vector3<T> &a, const T &b)
-    {
-        a.x *= b;
-        a.y *= b;
-        a.z *= b;
-        return a;
-    }
-
-    /**
-     * @brief
-     * Divides a scalar to a vector
-     * @tparam T Type of the vector
-     * @param a Vector
-     * @param b Scalar
-     * @return Vector3<T> Result of the division
-     */
-    template <typename T>
-    inline Vector3<T> &operator/=(Vector3<T> &a, const T &b)
-    {
-        a.x /= b;
-        a.y /= b;
-        a.z /= b;
-        return a;
-    }
-
-} // namespace Math
-
-#endif //! MATH_H
+} // namespace math
