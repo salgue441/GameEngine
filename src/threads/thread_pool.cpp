@@ -50,7 +50,8 @@ ThreadPool::ThreadPool(std::size_t num_threads) : m_stop(false)
 
 // Destructor
 /**
- * @brief Destroy the Thread Pool:: Thread Pool object
+ * @brief
+ * Destroy the Thread Pool:: Thread Pool object
  */
 ThreadPool::~ThreadPool()
 {
