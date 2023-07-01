@@ -8,8 +8,25 @@
  * @copyright Copyright (c) 2023
  *
  */
+// C++ Standard libraries
+#include <iostream>
+#include <stdexcept>
+#include <GL/glew.h>
 
+// Project headers
 #include "window.h"
+
+// Static methods
+/**
+ * @brief
+ * Error callback function for GLFW
+ * @param error Error code
+ * @param description Description of the error
+ */
+void Window::error_callback(int error, const char *description) noexcept
+{
+    std::cerr << "GLFW Error (" << error << "): " << description << std::endl;
+}
 
 // Constructors
 /**
@@ -83,18 +100,28 @@ bool Window::is_running() const noexcept
  */
 void Window::init()
 {
+    glfwSetErrorCallback(error_callback);
+
     if (!glfwInit())
         throw std::runtime_error("Failed to initialize GLFW");
 
-    m_window = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
+    // OpenGL context hints
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    m_window = glfwCreateWindow(m_width, m_height, m_title,
+                                nullptr, nullptr);
 
     if (!m_window)
     {
-        glfwTerminate();
+        terminate();
         throw std::runtime_error("Failed to create GLFW window");
     }
 
     glfwMakeContextCurrent(m_window);
+
+    info();
 }
 
 /**
@@ -103,7 +130,13 @@ void Window::init()
  */
 void Window::terminate()
 {
-    glfwTerminate();
+    if (m_window)
+    {
+        glfwDestroyWindow(m_window);
+        glfwTerminate();
+    }
+
+    m_window = nullptr;
 }
 
 /**
@@ -121,5 +154,27 @@ void Window::update()
  */
 void Window::render()
 {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glfwSwapBuffers(m_window);
+}
+
+// Methods (private)
+/**
+ * @brief
+ * Shows the available information about the window (Properties, renderer,
+ * OpenGL version, etc.)
+ */
+void Window::info() const noexcept
+{
+    std::cout << "Window information:" << std::endl;
+
+    std::cout << "\tVendor: " << glGetString(GL_VENDOR) << std::endl;
+    std::cout << "\tRenderer: " << glGetString(GL_RENDERER) << std::endl;
+    std::cout << "\tOpenGL version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "\tGLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION)
+              << std::endl;
+
+    std::cout << "\tWidth: " << m_width << std::endl;
+    std::cout << "\tHeight: " << m_height << std::endl;
+    std::cout << "\tTitle: " << m_title << std::endl;
 }

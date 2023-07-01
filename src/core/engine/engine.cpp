@@ -20,8 +20,9 @@
  * @param title Title of the window
  */
 Engine::Engine(std::uint32_t width, std::uint32_t height, const char *title) noexcept
-    : m_window(width, height, title)
 {
+    m_window = std::make_unique<Window>(width, height, title);
+    m_resource_manager = std::make_unique<ResourceManager>();
 }
 
 // Methods
@@ -33,12 +34,12 @@ void Engine::run()
 {
     try
     {
-        m_window.init();
+        m_window->init();
 
-        while (m_window.is_running())
+        while (m_window->is_running())
         {
-            m_window.update();
-            m_window.render();
+            m_window->update();
+            m_window->render();
         }
     }
     catch (const std::exception &e)

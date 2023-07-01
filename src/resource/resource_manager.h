@@ -28,11 +28,11 @@ class ResourceManager
 {
 public:
     // Constructors
+    ResourceManager();
     ResourceManager(const std::string &);
     ResourceManager(const std::string &, const std::size_t &);
 
     // Deleted Constructors
-    ResourceManager() = delete;
     ResourceManager(const ResourceManager &) = delete;
     ResourceManager(ResourceManager &&) = delete;
 
@@ -42,6 +42,9 @@ public:
     // Access Methods
     const std::string &get_resource(const std::string &);
     const std::string &get_resource_path() const;
+
+    // Mutator Methods
+    void set_resource_path(const std::string &);
 
     // Deleted Operators
     ResourceManager &operator=(const ResourceManager &) = delete;

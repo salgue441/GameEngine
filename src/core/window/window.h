@@ -59,6 +59,12 @@ private:
 
     bool m_is_running;
     Time m_time;
+
+    // Methods
+    void info() const noexcept;
+
+    // Static Methods
+    static void error_callback(int, const char *) noexcept;
 };
 
 #endif //! WINDOW_H

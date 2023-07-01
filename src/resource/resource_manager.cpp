@@ -22,11 +22,19 @@
 /**
  * @brief
  * Construct a new Resource Manager:: Resource Manager object
+ */
+ResourceManager::ResourceManager()
+    : m_resource_path("resources"), m_thread_pool(std::thread::hardware_concurrency())
+{
+}
+
+/**
+ * @brief
+ * Construct a new Resource Manager:: Resource Manager object
  * @param resource_path Path to the resources folder
  */
 ResourceManager::ResourceManager(const std::string &resource_path)
-    : m_resource_path(resource_path),
-      m_thread_pool(std::thread::hardware_concurrency())
+    : m_resource_path(resource_path), m_thread_pool(std::thread::hardware_concurrency())
 {
 }
 
@@ -72,11 +80,22 @@ const std::string &ResourceManager::get_resource_path() const
  * Get the resource
  * @param resource_name Name of the resource
  * @return const std::string& Path to the resource
- */ 
+ */
 const std::string &ResourceManager::get_resource(
     const std::string &resource_name)
 {
     return m_resources[resource_name].first;
+}
+
+// Mutator Methods
+/**
+ * @brief
+ * Set the resource path
+ * @param resource_path Path to the resources folder
+ */
+void ResourceManager::set_resource_path(const std::string &resource_path)
+{
+    m_resource_path = resource_path;
 }
 
 // Methods

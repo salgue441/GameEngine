@@ -16,9 +16,11 @@
 
 // Standard libraries
 #include <iostream>
+#include <memory>
 
 // Project headers
 #include "../window/window.h"
+#include "../../resource/resource_manager.h"
 
 /**
  * @brief
@@ -38,7 +40,12 @@ public:
     void run();
 
 private:
-    Window m_window;
+    std::unique_ptr<Window> m_window;
+    std::unique_ptr<ResourceManager> m_resource_manager;
+
+    // Methods
+    void update();
+    void render();
 };
 
 #endif //! ENGINE_H
