@@ -15,6 +15,7 @@ file(GLOB_RECURSE SOURCES
 
 # Directories
 include_directories(src)
+include_directories(src/lib)
 
 # Add executable
 add_executable(GameEngine ${SOURCES})
@@ -27,6 +28,10 @@ target_compile_options(GameEngine PRIVATE -Wall -Wextra -pedantic)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(GLEW REQUIRED)
+
+# STB Library
+set(STB_INCLUDE_DIR "src/lib")
+target_include_directories(GameEngine PRIVATE ${STB_INCLUDE_DIR})
 
 # Link libraries
 target_link_libraries(GameEngine PRIVATE 

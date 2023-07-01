@@ -49,14 +49,13 @@ public:
     void init();
     void terminate();
     void update();
-    void render();
+    void swap_buffers() const noexcept;
 
 private:
     std::uint32_t m_width;
     std::uint32_t m_height;
     GLFWwindow *m_window;
     const char *m_title;
-
     bool m_is_running;
     Time m_time;
 

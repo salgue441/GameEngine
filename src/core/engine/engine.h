@@ -21,6 +21,7 @@
 // Project headers
 #include "../window/window.h"
 #include "../../resource/resource_manager.h"
+#include "../../graphics/renderer/renderer.h"
 
 /**
  * @brief
@@ -42,6 +43,7 @@ public:
 private:
     std::unique_ptr<Window> m_window;
     std::unique_ptr<ResourceManager> m_resource_manager;
+    std::unique_ptr<Renderer> m_renderer;
 
     // Methods
     void update();

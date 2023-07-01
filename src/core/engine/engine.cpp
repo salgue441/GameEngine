@@ -39,7 +39,6 @@ void Engine::run()
         while (m_window->is_running())
         {
             m_window->update();
-            m_window->render();
         }
     }
     catch (const std::exception &e)

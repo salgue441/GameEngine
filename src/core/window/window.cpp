@@ -148,16 +148,6 @@ void Window::update()
     glfwPollEvents();
 }
 
-/**
- * @brief
- * Render the window
- */
-void Window::render()
-{
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glfwSwapBuffers(m_window);
-}
-
 // Methods (private)
 /**
  * @brief
@@ -177,4 +167,13 @@ void Window::info() const noexcept
     std::cout << "\tWidth: " << m_width << std::endl;
     std::cout << "\tHeight: " << m_height << std::endl;
     std::cout << "\tTitle: " << m_title << std::endl;
+}
+
+/**
+ * @brief
+ * Swaps the buffers of the window
+ */
+void Window::swap_buffers() const noexcept
+{
+    glfwSwapBuffers(m_window);
 }
