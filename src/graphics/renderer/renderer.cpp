@@ -84,68 +84,68 @@ void Renderer::draw_rectangle(float x, float y, float width, float height)
     glEnd();
 }
 
-/**
- * @brief
- * Draws a texture on the screen
- * @param texture_path Path to the texture
- * @param x X coordinate of the texture
- * @param y Y coordinate of the texture
- */
-void Renderer::draw_texture(const std::string &texture_path, float x, float y)
-{
-    // Load the texture
-    GLuint texture_id;
-    glGenTextures(1, &texture_id);
-    glBindTexture(GL_TEXTURE_2D, texture_id);
+// /**
+//  * @brief
+//  * Draws a texture on the screen
+//  * @param texture_path Path to the texture
+//  * @param x X coordinate of the texture
+//  * @param y Y coordinate of the texture
+//  */
+// void Renderer::draw_texture(const std::string &texture_path, float x, float y)
+// {
+//     // Load the texture
+//     GLuint texture_id;
+//     glGenTextures(1, &texture_id);
+//     glBindTexture(GL_TEXTURE_2D, texture_id);
 
-    // Set the texture wrapping/filtering options (on the currently bound texture object)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                    GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                    GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                    GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                    GL_LINEAR);
+//     // Set the texture wrapping/filtering options (on the currently bound texture object)
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+//                     GL_REPEAT);
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+//                     GL_REPEAT);
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+//                     GL_LINEAR);
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+//                     GL_LINEAR);
 
-    // Load image, create texture and generate mipmaps
-    int width, height, nr_channels;
+//     // Load image, create texture and generate mipmaps
+//     int width, height, nr_channels;
 
-    stbi_set_flip_vertically_on_load(true);
-    unsigned char *data = stbi_load(texture_path.c_str(),
-                                    &width, &height,
-                                    &nr_channels,
-                                    0);
+//     stbi_set_flip_vertically_on_load(true);
+//     unsigned char *data = stbi_load(texture_path.c_str(),
+//                                     &width, &height,
+//                                     &nr_channels,
+//                                     0);
 
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,
-                     width, height, 0, GL_RGB,
-                     GL_UNSIGNED_BYTE, data);
+//     if (data)
+//     {
+//         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,
+//                      width, height, 0, GL_RGB,
+//                      GL_UNSIGNED_BYTE, data);
 
-        // glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-        throw std::runtime_error("Failed to load texture");
+//         // glGenerateMipmap(GL_TEXTURE_2D);
+//     }
+//     else
+//         throw std::runtime_error("Failed to load texture");
 
-    stbi_image_free(data);
+//     stbi_image_free(data);
 
-    // Render the texture
-    glBindTexture(GL_TEXTURE_2D, texture_id);
-    glBegin(GL_QUADS);
+//     // Render the texture
+//     glBindTexture(GL_TEXTURE_2D, texture_id);
+//     glBegin(GL_QUADS);
 
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(x, y);
+//     glTexCoord2f(0.0f, 0.0f);
+//     glVertex2f(x, y);
 
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex2f(x + width, y);
+//     glTexCoord2f(1.0f, 0.0f);
+//     glVertex2f(x + width, y);
 
-    glTexCoord2f(1.0f, 1.0f);
-    glVertex2f(x + width, y + height);
+//     glTexCoord2f(1.0f, 1.0f);
+//     glVertex2f(x + width, y + height);
 
-    glTexCoord2f(0.0f, 1.0f);
-    glVertex2f(x, y + height);
+//     glTexCoord2f(0.0f, 1.0f);
+//     glVertex2f(x, y + height);
 
-    glEnd();
-    glDeleteTextures(1, &texture_id);
-}
+//     glEnd();
+//     glDeleteTextures(1, &texture_id);
+// }

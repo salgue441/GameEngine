@@ -16,7 +16,7 @@
 
 int main()
 {
-    Engine engine(800, 600, "Game Engine");
+    Engine engine(1920, 1080, "Game Engine");
     engine.run();
 
     return EXIT_SUCCESS;
