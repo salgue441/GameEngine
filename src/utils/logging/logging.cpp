@@ -11,10 +11,12 @@
 
 // C++ Standard Library
 #include <iostream>
-#include <string>
 
 // Project files
 #include "logging.h"
+
+// static attributes
+Logging *Logging::instance = nullptr;
 
 // Public Methods
 /**
