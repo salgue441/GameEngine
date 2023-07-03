@@ -13,7 +13,6 @@
 #define LOGGING_H
 
 // C++ Standard Library
-#include <iostream>
 #include <string>
 
 // Classes
