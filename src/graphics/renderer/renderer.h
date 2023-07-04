@@ -19,6 +19,7 @@
 
 // Project Headers
 #include "../../core/window/window.h"
+#include "../../resource/resource_manager.h"
 
 // Class
 /**
@@ -56,6 +57,7 @@ public:
 private:
     std::string m_resource_path;
     std::unique_ptr<Window> &m_window;
+    std::unique_ptr<ResourceManager> &m_resource_manager;
 };
 
 #endif //! RENDERER_H

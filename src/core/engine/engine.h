@@ -22,6 +22,7 @@
 #include "../window/window.h"
 #include "../../resource/resource_manager.h"
 #include "../../graphics/renderer/renderer.h"
+#include "../../utils/logging/logging.h"
 
 /**
  * @brief
@@ -44,6 +45,7 @@ private:
     std::unique_ptr<Window> m_window;
     std::unique_ptr<ResourceManager> m_resource_manager;
     std::unique_ptr<Renderer> m_renderer;
+    std::unique_ptr<Logging> m_logging;
 
     // Methods
     void update();

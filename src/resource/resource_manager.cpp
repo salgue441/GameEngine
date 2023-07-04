@@ -77,6 +77,18 @@ const std::string &ResourceManager::get_resource_path() const
 
 /**
  * @brief
+ * Gets the texture
+ * @param texture_name Name of the texture
+ * @return const std::string& Path to the texture
+ */
+const std::string &ResourceManager::get_texture(
+    const std::string &texture_name) const
+{
+    return m_resources.at(texture_name).first;
+}
+
+/**
+ * @brief
  * Get the resource
  * @param resource_name Name of the resource
  * @return const std::string& Path to the resource
@@ -85,6 +97,23 @@ const std::string &ResourceManager::get_resource(
     const std::string &resource_name)
 {
     return m_resources[resource_name].first;
+}
+
+/**
+ * @brief
+ * Get the resource path
+ * @param resource_name Name of the resource
+ * @return const std::string& Path to the resource
+ */
+const std::string &ResourceManager::get_resource_path(
+    const std::string &resource_name) const
+{
+    auto it = m_resources.find(resource_name);
+
+    if (it != m_resources.end())
+        return it->second.first;
+
+    return m_resource_path;
 }
 
 // Mutator Methods
@@ -171,4 +200,34 @@ void ResourceManager::unload_resource(const std::string &resource_name)
 
     if (resource.second == 0)
         m_resources.erase(it);
+}
+
+// Methods (private)
+/**
+ * @brief
+ * Load a resource into memory. If the resource is already loaded, it will
+ * increase the reference count. If the resource does not exist, it will throw
+ * an exception.
+ * @param resource_name Name of the resource
+ * @param resource_path Path to the resource
+ * @throw std::runtime_error Resource does not exist
+ */
+void ResourceManager::load_resource_async(const std::string &resource_name,
+                                          const std::string &resource_path)
+{
+    if (resource_loaded(resource_name))
+    {
+        m_resources[resource_name].second++;
+        return;
+    }
+
+    std::ifstream file(m_resource_path + resource_path);
+
+    if (!file.good())
+        throw std::runtime_error("Resource does not exist");
+
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+
+    m_resources[resource_name] = std::make_pair(buffer.str(), 1);
 }

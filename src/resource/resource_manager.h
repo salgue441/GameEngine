@@ -41,7 +41,9 @@ public:
 
     // Access Methods
     const std::string &get_resource(const std::string &);
+    const std::string &get_texture(const std::string &) const;
     const std::string &get_resource_path() const;
+    const std::string &get_resource_path(const std::string &) const;
 
     // Mutator Methods
     void set_resource_path(const std::string &);
@@ -62,7 +64,7 @@ private:
     ThreadPool m_thread_pool;
 
     // Methods
-    void load_resource_thread(const std::string &, const std::string &);
+    void load_resource_async(const std::string &, const std::string &);
 };
 
 #endif //! RESOURCE_MANAGER_H
